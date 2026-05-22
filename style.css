@@ -848,32 +848,53 @@ body.modal-open {
 
 /* ============ Responsive ============ */
 @media (max-width: 900px) {
-    .hero { flex-direction: column; padding: 120px 24px 60px; text-align: center; }
+    .navbar { padding: 16px 20px; }
+    .navbar.scrolled { padding: 12px 20px; }
+    .hero { flex-direction: column; padding: 100px 20px 40px; text-align: center; }
     .hero-content { max-width: 100%; }
     .hero-description { margin: 0 auto 32px; }
     .hero-cta { justify-content: center; }
     .hero-stats { justify-content: center; }
-    .hero-visual { max-width: 350px; height: 350px; margin: 0 auto; }
+    .hero-visual { max-width: 320px; height: 320px; margin: 0 auto; }
     .about-content { grid-template-columns: 1fr; }
     .currently-grid { grid-template-columns: 1fr; }
     .contact-content { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
-    section { padding: 80px 24px; }
+    section { padding: 60px 20px; }
     .floating-card { display: none; }
+    .footer { padding: 30px 20px; }
     
+    /* Card paddings on tablet/mobile */
+    .about-card, .currently-desc-card, .contact-info, .contact-form-wrapper, .project-card { padding: 24px; }
+    
+    /* Projects Grid stack */
+    .projects-grid { grid-template-columns: 1fr; gap: 20px; }
+
     /* Modal responsive */
+    .project-modal { padding: 16px; }
+    .modal-content { max-height: 95vh; }
+    .modal-body { padding: 24px; }
     .modal-details-grid { grid-template-columns: 1fr; gap: 24px; }
     .modal-details-sidebar { border-left: none; padding-left: 0; border-top: 1px solid var(--glass-border); padding-top: 24px; }
-    .modal-body { padding: 24px; }
 }
+
 @media (max-width: 600px) {
-    .hero-title { font-size: 2.2rem; }
+    .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
     .hero-stats { flex-direction: column; gap: 16px; }
     .stat-divider { width: 40px; height: 1px; }
     .skills-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
     .tools-grid { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .modal-header-layout { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .hero-visual { max-width: 260px; height: 260px; }
+    
+    /* Extra spacing & alignment fixes for mobile */
+    .about-card, .currently-desc-card, .contact-info, .contact-form-wrapper, .project-card { padding: 20px; }
+    section { padding: 50px 16px; }
+    
+    /* Modal responsive mobile styling */
+    .modal-body { padding: 20px 16px; }
+    .modal-header-layout { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; }
+    .modal-project-icon { width: 60px; height: 60px; font-size: 1.8rem; }
+    .modal-project-icon img { width: 36px !important; height: 36px !important; }
     .modal-close { top: 12px; right: 12px; width: 34px; height: 34px; font-size: 1.25rem; }
 }
