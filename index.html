@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayed Nada | Full-Stack Developer & UI/UX Designer</title>
+    <meta name="description" content="Portfolio of Sayed Nada — Full-Stack Developer specializing in modern web technologies, database design, 3D experiences, and beautiful UI/UX.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-content">
+            <div class="loader-ring">
+                <div class="loader-ring-inner"></div>
+            </div>
+            <div class="loader-text">
+                <span class="loader-greeting">Welcome</span>
+                <span class="loader-name">Sayed Nada</span>
+                <div class="loader-bar">
+                    <div class="loader-bar-fill" id="loaderBarFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D Canvas Background -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">
+            <span class="logo-text">S. Nada</span>
+        </div>
+        <div class="nav-links">
+            <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+            <a href="#about" class="nav-link" data-section="about">About</a>
+            <a href="#currently" class="nav-link" data-section="currently">Currently</a>
+            <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+            <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+            <a href="#tools" class="nav-link" data-section="tools">Tools</a>
+            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        </div>
+        <div class="nav-hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#hero" class="mobile-link">Home</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#currently" class="mobile-link">Currently</a>
+        <a href="#skills" class="mobile-link">Skills</a>
+        <a href="#projects" class="mobile-link">Projects</a>
+        <a href="#tools" class="mobile-link">Tools</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Available for work</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line line-1">
+                    <span class="title-word" data-delay="0">Hi,</span>
+                    <span class="title-word" data-delay="1">I'm</span>
+                </span>
+                <span class="title-line line-2">
+                    <span class="title-word gradient-text" data-delay="2">Sayed</span>
+                    <span class="title-word gradient-text" data-delay="3">Nada</span>
+                </span>
+            </h1>
+            <div class="hero-roles">
+                <span class="role-text" id="roleText"></span>
+                <span class="role-cursor">|</span>
+            </div>
+            <p class="hero-description">
+                I build <span class="highlight">modern</span>, <span class="highlight">interactive</span>, and <span class="highlight">performant</span> web experiences with cutting-edge technologies.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">
+                    <span>View Projects</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-ghost">
+                    <span>Get in Touch</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="statProjects" data-target="0">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" id="statTech" data-target="0">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" id="statYears" data-target="2">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Years of Study</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-card card-1">
+                <div class="card-icon">⚛️</div>
+                <span>React</span>
+            </div>
+            <div class="floating-card card-2">
+                <div class="card-icon">🔷</div>
+                <span>TypeScript</span>
+            </div>
+            <div class="floating-card card-3">
+                <div class="card-icon">🎨</div>
+                <span>Figma</span>
+            </div>
+            <div class="floating-card card-4">
+                <div class="card-icon">▲</div>
+                <span>Next.js</span>
+            </div>
+            <div class="floating-card card-5">
+                <div class="card-icon">🔥</div>
+                <span>Firebase</span>
+            </div>
+            <canvas id="heroOrb"></canvas>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+            <p class="section-subtitle">Get to know Sayed, the developer and designer</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <div class="about-card glass-card">
+                    <div class="about-intro">
+                        <p id="aboutText">Loading bio...</p>
+                    </div>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🎓</div>
+                            <div>
+                                <h4>Education</h4>
+                                <p id="educationText">Loading education details...</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">📍</div>
+                            <div>
+                                <h4>Location & Age</h4>
+                                <p id="locationAgeText">Loading details...</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">⚡</div>
+                            <div>
+                                <h4>Specialties</h4>
+                                <p>Full-Stack development, PostgreSQL databases, REST APIs & UI/UX design in Figma</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="profile-image-container glass-card">
+                    <div class="image-frame">
+                        <img src="Profile.jpeg" alt="Sayed Nada" class="profile-image" id="profileImg">
+                    </div>
+                    <div class="profile-meta">
+                        <h3 class="profile-meta-name">Sayed Nada</h3>
+                        <span class="profile-meta-title">Full-Stack Engineer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currently Section -->
+    <section class="currently" id="currently">
+        <div class="section-header">
+            <h2 class="section-title" id="currentlyTitle">What I'm Doing <span class="gradient-text">Now</span></h2>
+            <p class="section-subtitle" id="currentlySubtitle">A snapshot of my current focus, learning path, and side projects.</p>
+        </div>
+        <div class="currently-grid">
+            <div class="currently-desc-card glass-card reveal">
+                <div class="currently-live-badge">
+                    <span class="live-dot"></span>
+                    <span>LIVE UPDATE</span>
+                </div>
+                <p id="currentlyDesc">Loading update...</p>
+            </div>
+            <div class="currently-items" id="currentlyItems">
+                <!-- Injected dynamically by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="section-header">
+            <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+            <p class="section-subtitle">Technologies and frameworks I work with</p>
+        </div>
+
+        <!-- Skill Category Tabs -->
+        <div class="skill-tabs">
+            <button class="skill-tab active" data-category="frontend">
+                <span class="tab-icon">🖥️</span> Frontend
+            </button>
+            <button class="skill-tab" data-category="backend">
+                <span class="tab-icon">⚙️</span> Backend
+            </button>
+            <button class="skill-tab" data-category="database">
+                <span class="tab-icon">🗄️</span> Database
+            </button>
+            <button class="skill-tab" data-category="uiux">
+                <span class="tab-icon">🎨</span> UI/UX
+            </button>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-header">
+            <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+            <p class="section-subtitle">Real-world applications and engineering systems I've built</p>
+        </div>
+
+        <!-- Project Category Tabs -->
+        <div class="project-tabs">
+            <button class="project-tab active" data-category="all">
+                All
+            </button>
+            <button class="project-tab" data-category="fullstack">
+                Full-Stack
+            </button>
+            <button class="project-tab" data-category="frontend">
+                Frontend
+            </button>
+            <button class="project-tab" data-category="database">
+                Database
+            </button>
+            <button class="project-tab" data-category="uiux">
+                UI/UX
+            </button>
+            <button class="project-tab" data-category="other">
+                Other
+            </button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Projects injected dynamically by JS -->
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools" id="tools">
+        <div class="section-header">
+            <h2 class="section-title">Tools & <span class="gradient-text">Workflow</span></h2>
+            <p class="section-subtitle">My development environment and daily tools</p>
+        </div>
+
+        <div class="tools-grid" id="toolsCategoryGrid">
+            <!-- Tools categories injected dynamically by JS -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+            <p class="section-subtitle">Have a project in mind? Let's build something amazing together</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info glass-card">
+                <h3>Get in Touch</h3>
+                <p>I'm always excited to discuss new projects, creative ideas, or opportunities to be part of something great.</p>
+                <div class="contact-links">
+                    <a href="mailto:sayedmahmouda00@gmail.com" class="contact-link" id="contactEmail">
+                        <div class="contact-link-icon">📧</div>
+                        <div style="flex-grow: 1;">
+                            <span class="contact-link-label">Email</span>
+                            <span class="contact-link-value" id="infoEmail">sayedmahmouda00@gmail.com</span>
+                        </div>
+                        <button class="copy-btn" id="copyEmailBtn" title="Copy Email" aria-label="Copy Email" type="button">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <span class="copy-tooltip" id="emailTooltip">Copied!</span>
+                    </a>
+                    <a href="tel:01206620678" class="contact-link" id="contactPhone">
+                        <div class="contact-link-icon">📞</div>
+                        <div style="flex-grow: 1;">
+                            <span class="contact-link-label">Phone</span>
+                            <span class="contact-link-value" id="infoPhone">01206620678</span>
+                        </div>
+                        <button class="copy-btn" id="copyPhoneBtn" title="Copy Phone" aria-label="Copy Phone" type="button">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <span class="copy-tooltip" id="phoneTooltip">Copied!</span>
+                    </a>
+                    <a href="https://github.com/SayedNada74" target="_blank" class="contact-link" id="contactGithub">
+                        <div class="contact-link-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="invert-icon" width="24">
+                        </div>
+                        <div>
+                            <span class="contact-link-label">GitHub</span>
+                            <span class="contact-link-value" id="infoGithub">github.com/SayedNada74</span>
+                        </div>
+                    </a>
+                    <a href="https://linkedin.com/in/sayed-nada-6852b9345" target="_blank" class="contact-link" id="contactLinkedin">
+                        <div class="contact-link-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="24">
+                        </div>
+                        <div>
+                            <span class="contact-link-label">LinkedIn</span>
+                            <span class="contact-link-value" id="infoLinkedin">linkedin.com/in/sayed-nada-6852b9345</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form-wrapper glass-card">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="formName" placeholder=" " required>
+                        <label for="formName">Your Name</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="formEmail" placeholder=" " required>
+                        <label for="formEmail">Your Email</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="formMessage" placeholder=" " rows="4" required></textarea>
+                        <label for="formMessage">Your Message</label>
+                        <div class="form-line"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">S. Nada</span>
+            </div>
+            <p class="footer-text">Designed & Built by <span class="gradient-text">Sayed Nada</span></p>
+            <p class="footer-year">© 2026 — All rights reserved</p>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="modalClose" aria-label="Close details">&times;</button>
+            <div class="modal-body">
+                <div class="modal-header-layout">
+                    <div class="modal-project-icon" id="modalIcon"></div>
+                    <div class="modal-header-text">
+                        <span class="modal-project-tag" id="modalCategory">Frontend & API Integration</span>
+                        <h2 class="modal-project-title" id="modalTitle">Project Title</h2>
+                    </div>
+                </div>
+                
+                <div class="modal-details-grid">
+                    <div class="modal-details-main">
+                        <div class="detail-section">
+                            <h4><span class="detail-sec-icon">⚠️</span> The Problem</h4>
+                            <p id="modalProblem">Problem details go here...</p>
+                        </div>
+                        <div class="detail-section">
+                            <h4><span class="detail-sec-icon">✨</span> The Solution</h4>
+                            <p id="modalSolution">Solution details go here...</p>
+                        </div>
+                        <div class="detail-section">
+                            <h4><span class="detail-sec-icon">📈</span> Impact & Results</h4>
+                            <p id="modalImpact">Impact details go here...</p>
+                        </div>
+                    </div>
+                    <div class="modal-details-sidebar">
+                        <div class="detail-section">
+                            <h4>Tech Stack</h4>
+                            <div class="modal-tech-list" id="modalTech">
+                                <!-- Tech tags -->
+                            </div>
+                        </div>
+                        <div class="modal-action-links" id="modalLinks">
+                            <!-- Action links -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
