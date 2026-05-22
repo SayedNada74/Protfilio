@@ -857,6 +857,7 @@ body.modal-open {
     .hero-stats { justify-content: center; }
     .hero-visual { width: 100%; max-width: 320px; height: auto; aspect-ratio: 1 / 1; margin: 0 auto; }
     .about-content { grid-template-columns: 1fr; }
+    .about-visual { order: -1; }
     .currently-grid { grid-template-columns: 1fr; }
     .contact-content { grid-template-columns: 1fr; }
     .nav-links { display: none; }
