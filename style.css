@@ -862,7 +862,6 @@ body.modal-open {
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
     section { padding: 60px 20px; }
-    .floating-card { display: none; }
     .footer { padding: 30px 20px; }
     
     /* Card paddings on tablet/mobile */
@@ -886,6 +885,18 @@ body.modal-open {
     .skills-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
     .tools-grid { grid-template-columns: 1fr; }
     .hero-visual { max-width: 260px; }
+    
+    /* Floating Cards Mobile Positions */
+    .floating-card {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+    .card-icon { font-size: 0.95rem; }
+    .card-1 { top: 12%; left: -6%; }
+    .card-2 { top: 38%; right: -6%; }
+    .card-3 { bottom: 30%; left: -10%; }
+    .card-4 { top: 3%; right: 12%; }
+    .card-5 { bottom: 15%; right: 2%; }
     
     /* Extra spacing & alignment fixes for mobile */
     .about-card, .currently-desc-card, .contact-info, .contact-form-wrapper, .project-card { padding: 20px; }

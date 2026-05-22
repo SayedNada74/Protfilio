@@ -486,9 +486,20 @@ document.addEventListener('mousemove', (e) => {
     const octMesh = new THREE.Mesh(new THREE.OctahedronGeometry(0.7, 0), mat2);
     const coneMesh = new THREE.Mesh(new THREE.ConeGeometry(0.6, 1.2, 4), mat3);
 
-    torusMesh.position.set(4, 2, -3);
-    octMesh.position.set(-4, -2, -2);
-    coneMesh.position.set(-2, 3, -4);
+    function positionBackgroundShapes() {
+        const aspect = window.innerWidth / window.innerHeight;
+        const scaleX = Math.max(0.45, Math.min(1, aspect / 1.6));
+        torusMesh.position.x = 4.2 * scaleX;
+        octMesh.position.x = -4.2 * scaleX;
+        coneMesh.position.x = -2.2 * scaleX;
+    }
+    positionBackgroundShapes();
+    torusMesh.position.y = 2;
+    torusMesh.position.z = -3;
+    octMesh.position.y = -2;
+    octMesh.position.z = -2;
+    coneMesh.position.y = 3;
+    coneMesh.position.z = -4;
 
     shapesGroup.add(torusMesh);
     shapesGroup.add(octMesh);
@@ -532,6 +543,7 @@ document.addEventListener('mousemove', (e) => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
+        positionBackgroundShapes();
     });
 })();
 
