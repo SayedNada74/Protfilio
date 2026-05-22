@@ -584,7 +584,11 @@ document.addEventListener('mousemove', (e) => {
     animate();
 
     const observer = new ResizeObserver(() => {
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        const w = canvas.parentElement.clientWidth;
+        const h = canvas.parentElement.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
     });
     observer.observe(canvas.parentElement);
 })();
