@@ -542,8 +542,19 @@ document.addEventListener('mousemove', (e) => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 100);
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    function resizeOrb() {
+        const container = canvas.parentElement;
+        if (!container) return;
+        const size = Math.min(container.clientWidth, container.clientHeight);
+        canvas.style.width = size + 'px';
+        canvas.style.height = size + 'px';
+        renderer.setSize(size, size);
+        camera.aspect = 1;
+        camera.updateProjectionMatrix();
+    }
+    resizeOrb();
 
     // Icosahedron wireframe
     const geo = new THREE.IcosahedronGeometry(2.2, 1);
@@ -567,13 +578,11 @@ document.addEventListener('mousemove', (e) => {
 
     function animate() {
         requestAnimationFrame(animate);
-        // Base rotation
         mesh.rotation.y += 0.004;
         mesh.rotation.x += 0.001;
         mesh2.rotation.y -= 0.003;
         mesh2.rotation.z += 0.002;
 
-        // Make the 3D Orb tilt towards the mouse cursor
         mesh.rotation.x += (globalMouseY * 0.2 - mesh.rotation.x) * 0.05;
         mesh.rotation.y += (globalMouseX * 0.2 - mesh.rotation.y) * 0.05;
         mesh2.rotation.x -= (globalMouseY * 0.1 - mesh2.rotation.x) * 0.05;
@@ -583,13 +592,7 @@ document.addEventListener('mousemove', (e) => {
     }
     animate();
 
-    const observer = new ResizeObserver(() => {
-        const w = canvas.parentElement.clientWidth;
-        const h = canvas.parentElement.clientHeight;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h);
-    });
+    const observer = new ResizeObserver(resizeOrb);
     observer.observe(canvas.parentElement);
 })();
 
