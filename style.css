@@ -114,7 +114,7 @@ img { max-width: 100%; }
 @keyframes blink { 50% { opacity: 0; } }
 .hero-description { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 32px; max-width: 500px; opacity: 0; animation: fadeIn 0.8s 0.7s forwards; }
 .highlight { color: var(--text-primary); font-weight: 600; }
-.hero-cta { display: flex; gap: 16px; margin-bottom: 48px; opacity: 0; animation: fadeIn 0.8s 0.9s forwards; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 48px; opacity: 0; animation: fadeIn 0.8s 0.9s forwards; }
 @keyframes fadeIn { to { opacity: 1; } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -131,6 +131,9 @@ img { max-width: 100%; }
 .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
 .btn-ghost { background: transparent; color: var(--text-primary); border: 1px solid var(--glass-border); }
 .btn-ghost:hover { border-color: var(--accent-1); background: rgba(108,92,231,0.1); transform: translateY(-2px); }
+
+.btn-secondary { background: rgba(0, 206, 201, 0.08); color: var(--accent-2); border: 1px solid rgba(0, 206, 201, 0.2); }
+.btn-secondary:hover { background: rgba(0, 206, 201, 0.16); border-color: var(--accent-2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 206, 201, 0.15); }
 
 /* Stats */
 .hero-stats { display: flex; align-items: center; gap: 32px; opacity: 0; animation: fadeIn 0.8s 1.1s forwards; }
