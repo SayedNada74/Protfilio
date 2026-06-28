@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em">
+  <defs>
+    <linearGradient id="labs-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34a853" />
+      <stop offset="50%" stop-color="#4285f4" />
+      <stop offset="100%" stop-color="#a142f4" />
+    </linearGradient>
+  </defs>
+  <!-- Flask body -->
+  <path d="M19 19c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2 0-.36.1-.7.28-1L9 11V5c0-.55.45-1 1-1h4c.55 0 1 .45 1 1v6l3.72 7c.18.3.28.64.28 1z" fill="url(#labs-grad)" />
+  <!-- Liquid shine / glow bubbles -->
+  <circle cx="10" cy="15" r="1.5" fill="#ffffff" opacity="0.6" />
+  <circle cx="14" cy="17" r="1.2" fill="#ffffff" opacity="0.5" />
+  <circle cx="12" cy="13" r="1" fill="#ffffff" opacity="0.7" />
+</svg>

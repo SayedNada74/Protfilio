@@ -489,7 +489,7 @@ section { padding: 100px 60px; position: relative; }
     border: 1px solid transparent; transition: all 0.3s; font-size: 0.85rem;
 }
 .tool-item:hover { border-color: var(--glass-border); background: rgba(255,255,255,0.06); transform: translateY(-2px); }
-.tool-item img { width: 20px; height: 20px; }
+.tool-item img { width: 20px; height: 20px; object-fit: contain; }
 .tool-item .invert-icon { filter: invert(1); }
 .tool-emoji { font-size: 1.2rem; width: 20px; text-align: center; }
 .tools-orbit { display: none; /* Hidden on desktop, visual only */ }

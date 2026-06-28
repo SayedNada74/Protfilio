@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em">
+  <defs>
+    <linearGradient id="antigrav-rainbow" x1="0%" y1="100%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3186FF" />
+      <stop offset="40%" stop-color="#08B962" />
+      <stop offset="70%" stop-color="#f39c12" />
+      <stop offset="100%" stop-color="#FC413D" />
+    </linearGradient>
+  </defs>
+  <path d="M 5,19 C 5,10 8,5 12,5 C 16,5 19,10 19,19" fill="none" stroke="url(#antigrav-rainbow)" stroke-width="3.5" stroke-linecap="round" />
+</svg>
