@@ -495,8 +495,8 @@ section { padding: 100px 60px; position: relative; }
 .tools-orbit { display: none; /* Hidden on desktop, visual only */ }
 
 /* ============ Contact ============ */
-.contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1000px; margin: 0 auto; }
-.contact-info { padding: 40px; }
+.contact-content { display: flex; justify-content: center; max-width: 600px; margin: 0 auto; width: 100%; }
+.contact-info { padding: 40px; width: 100%; }
 .contact-info h3 { font-family: var(--font-main); font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; }
 .contact-info > p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 30px; }
 .contact-links { display: flex; flex-direction: column; gap: 16px; }

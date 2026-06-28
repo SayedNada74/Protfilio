@@ -23,6 +23,11 @@ function initData() {
         phoneEl.href = `tel:${data.personal.phone}`;
         document.getElementById('infoPhone').textContent = data.personal.phone;
     }
+    const whatsappEl = document.getElementById('contactWhatsapp');
+    if (whatsappEl) {
+        whatsappEl.href = `https://wa.me/2${data.personal.whatsapp}`;
+        document.getElementById('infoWhatsapp').textContent = data.personal.whatsapp;
+    }
     const gitEl = document.getElementById('contactGithub');
     if (gitEl) {
         gitEl.href = data.personal.github;
@@ -724,23 +729,7 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
-/* ============ Contact Form ============ */
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = e.target.querySelector('.btn-submit span');
-        if (btn) {
-            btn.textContent = 'Message Sent! ✓';
-            btn.parentElement.style.background = 'linear-gradient(135deg, #00b894, #00cec9)';
-            setTimeout(() => {
-                btn.textContent = 'Send Message';
-                btn.parentElement.style.background = '';
-                e.target.reset();
-            }, 3000);
-        }
-    });
-}
+
 
 /* ============ Smooth Section Scroll ============ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -793,5 +782,7 @@ function setupClipboardCopy(btnId, tooltipId, textToCopy) {
 // Bind clipboard copy buttons
 const emailVal = window.portfolioData ? window.portfolioData.personal.email : 'sayedmahmouda00@gmail.com';
 const phoneVal = window.portfolioData ? window.portfolioData.personal.phone : '01206620678';
+const whatsappVal = window.portfolioData ? window.portfolioData.personal.whatsapp : '01040246598';
 setupClipboardCopy('copyEmailBtn', 'emailTooltip', emailVal);
 setupClipboardCopy('copyPhoneBtn', 'phoneTooltip', phoneVal);
+setupClipboardCopy('copyWhatsappBtn', 'whatsappTooltip', whatsappVal);

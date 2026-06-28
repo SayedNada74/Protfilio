@@ -5,6 +5,7 @@ const portfolioData = {
         age: 22,
         location: "Ismailia, Egypt",
         phone: "01206620678",
+        whatsapp: "01040246598",
         education: {
             university: "Sinai University",
             faculty: "Faculty of Computers and Information",
