@@ -1,7 +1,7 @@
 const portfolioData = {
     personal: {
         name: "Sayed Nada",
-        title: "Full-Stack Developer & UI/UX Designer",
+        title: "Front-End Developer & UI/UX Designer",
         age: 22,
         location: "Ismailia, Egypt",
         phone: "01206620678",
@@ -11,7 +11,7 @@ const portfolioData = {
             faculty: "Faculty of Computers and Information",
             duration: "2022 - 2026"
         },
-        about: "I'm a 22-year-old Full-Stack Developer and UI/UX Designer from Ismailia, Egypt. I am currently studying at Sinai University, Faculty of Computers and Information (Class of 2022 - 2026). I have a strong passion for designing and building interactive, high-performance web and mobile applications. By bridging the gap between elegant UI/UX designs and robust backend logic, I create applications that look premium and work flawlessly.",
+        about: "I'm a 22-year-old Front-End Developer and UI/UX Designer from Ismailia, Egypt. I am currently studying at Sinai University, Faculty of Computers and Information (Class of 2022 - 2026). I have a strong passion for designing and building interactive, high-performance web and mobile applications. By bridging the gap between elegant UI/UX designs and robust backend logic, I create applications that look premium and work flawlessly.",
         email: "sayedmahmouda00@gmail.com",
         github: "https://github.com/SayedNada74",
         linkedin: "https://linkedin.com/in/sayed-nada-6852b9345",
@@ -57,6 +57,10 @@ const portfolioData = {
             { name: "User Flow Design", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unifiedmodelinglanguage/unifiedmodelinglanguage-original.svg", level: "Proficient" },
             { name: "Wireframing", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg", level: "Proficient" },
             { name: "Design Systems", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-original.svg", level: "Intermediate" }
+        ],
+        more: [
+            { name: "React Native", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", level: "Beginner" },
+            { name: "Expo", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg", level: "Beginner", invert: true }
         ]
     },
     tools: [

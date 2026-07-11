@@ -117,7 +117,7 @@ function renderProjects(filter = 'all') {
     if (!projectsGrid || !data.projects) return;
 
     projectsGrid.innerHTML = '';
-    
+
     // Robust filtering logic with fallback for cached data.js or missing filter properties
     const filteredProjects = filter === 'all'
         ? data.projects
@@ -615,12 +615,12 @@ document.addEventListener('mousemove', (e) => {
 
 /* ============ Typing Animation ============ */
 const roles = [
-    "Full-Stack Developer 💻",
-    "Frontend Engineer ⚛️",
-    "UI/UX Designer 🎨",
+    "Front-End Developer ⚛️",
     "React & Next.js Developer ▲",
-    "Database Architect 🗄️",
-    "Creative Problem Solver 🧠"
+    "UI/UX Designer 🎨",
+    "Creative Problem Solver 🧠",
+    "Prompt Engineer & Frontend Developer 🪄",
+    "Clean Code"
 ];
 let roleIndex = 0, charIndex = 0, isDeleting = false;
 const roleText = document.getElementById('roleText');
@@ -764,11 +764,11 @@ function setupClipboardCopy(btnId, tooltipId, textToCopy) {
         navigator.clipboard.writeText(textToCopy).then(() => {
             // Show tooltip
             tooltip.classList.add('show');
-            
+
             // Temporary icon success state
             const origColor = btn.style.color;
             btn.style.color = 'var(--accent-2)';
-            
+
             setTimeout(() => {
                 tooltip.classList.remove('show');
                 btn.style.color = origColor;
