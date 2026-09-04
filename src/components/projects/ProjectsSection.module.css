@@ -1,0 +1,145 @@
+.projectsWrapper {
+  position: relative;
+  background-color: var(--bg-primary);
+}
+
+.catalogSection {
+  padding-block: var(--space-24);
+  border-top: 1px solid var(--border-subtle);
+  background-color: var(--bg-secondary);
+  position: relative;
+}
+
+.catalogHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-16);
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.catalogTag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-2);
+}
+
+.catalogTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.catalogSubtitle {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 580px;
+  margin-top: var(--space-2);
+}
+
+/* Tabs Container */
+.tabsContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 5px;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+}
+
+.tabBtn {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+
+.tabBtn:not(.activeTab):hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.activeTab,
+.activeTab:hover {
+  background: var(--accent) !important;
+  color: #06060a !important;
+  box-shadow: 0 4px 16px rgba(0, 245, 212, 0.35);
+}
+
+/* Catalog Grid */
+.catalogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-8);
+}
+
+@media (max-width: 1024px) {
+  .catalogHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tabsContainer {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+  }
+
+  .catalogGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* Light Mode Overrides (Cerulean Blue & Pearl White) */
+:global([data-theme='light']) .catalogTag {
+  color: #2c6479 !important;
+  font-weight: 700 !important;
+}
+
+:global([data-theme='light']) .catalogTitle {
+  color: #10222a !important;
+}
+
+:global([data-theme='light']) .catalogSubtitle {
+  color: #25404e !important;
+}
+
+:global([data-theme='light']) .tabsContainer {
+  background: #ffffff !important;
+  border: 1px solid rgba(44, 100, 121, 0.18) !important;
+  box-shadow: 0 4px 16px rgba(44, 100, 121, 0.08) !important;
+}
+
+:global([data-theme='light']) .tabBtn {
+  color: #10222a !important;
+  font-weight: 600 !important;
+}
+
+:global([data-theme='light']) .tabBtn:not(.activeTab):hover {
+  color: #2c6479 !important;
+  background: rgba(44, 100, 121, 0.08) !important;
+}
+
+:global([data-theme='light']) .activeTab,
+:global([data-theme='light']) .activeTab:hover {
+  background: #2c6479 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(44, 100, 121, 0.35) !important;
+}
+

@@ -137,59 +137,93 @@ function renderProjects(filter = 'all') {
     filteredProjects.forEach((proj, i) => {
         const card = document.createElement('div');
         card.className = 'project-card glass-card reveal';
-        card.style.animationDelay = `${i * 0.1}s`;
+        card.style.animationDelay = `${i * 0.08}s`;
 
         const techTags = proj.tech.map(t => `<span class="project-tech-tag">${t}</span>`).join('');
 
         // Check if icon is an image file path (like png/jpg) or url
         const isImg = proj.icon && (proj.icon.includes('.') || proj.icon.startsWith('http'));
-        const iconHTML = isImg ? `<img src="${proj.icon}" alt="${proj.title}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;">` : (proj.icon || '📁');
+        const iconHTML = isImg ? `<img src="${proj.icon}" alt="${proj.title}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px;">` : (proj.icon || '📁');
+
+        // Thumbnail block
+        const thumbnailHTML = proj.image ? `
+            <div class="project-thumbnail-wrapper">
+                <img src="${proj.image}" alt="${proj.title}" class="project-thumbnail" loading="lazy">
+                <div class="project-thumbnail-overlay"></div>
+                <span class="project-tag-badge">${proj.category}</span>
+                <div class="project-quick-view-badge">
+                    <span>Quick View</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                    </svg>
+                </div>
+            </div>
+        ` : `
+            <div class="project-thumbnail-wrapper" style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);">
+                <div style="font-size:3rem;">${iconHTML}</div>
+                <span class="project-tag-badge">${proj.category}</span>
+            </div>
+        `;
 
         card.innerHTML = `
-            <div class="project-card-header">
-                <div class="project-icon">${iconHTML}</div>
-                <span class="project-tag">${proj.category}</span>
-            </div>
-            <h3>${proj.title}</h3>
-            <p>${proj.description}</p>
-            <div class="project-tech-list">
-                ${techTags}
-            </div>
-            <div class="project-card-links">
-                ${proj.github && proj.github !== '#' ? `
-                <a href="${proj.github}" target="_blank" class="project-card-link">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="invert-icon" width="16" style="vertical-align:middle;">
-                    <span>GitHub</span>
-                </a>` : ''}
-                ${proj.live && proj.live !== '#' ? `
-                <a href="${proj.live}" target="_blank" class="project-card-link">
-                    ${proj.live.includes('figma.com') ? `
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" width="16" style="vertical-align:middle; margin-right:4px;">
-                    <span>Figma Design</span>
-                    ` : `
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
-                    </svg>
-                    <span>Live Demo</span>
-                    `}
-                </a>` : ''}
+            ${thumbnailHTML}
+            <div class="project-card-body">
+                <div class="project-card-header-compact">
+                    <div class="project-mini-icon">${iconHTML}</div>
+                    <h3>${proj.title}</h3>
+                </div>
+                <p>${proj.description}</p>
+                <div class="project-tech-list">
+                    ${techTags}
+                </div>
+                <div class="project-card-footer">
+                    <button class="project-action-btn btn-detail" type="button">
+                        <span>Case Study</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <div class="project-card-links">
+                        ${proj.github && proj.github !== '#' ? `
+                        <a href="${proj.github}" target="_blank" class="project-icon-link" title="GitHub Repository" rel="noreferrer">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="invert-icon" width="16">
+                        </a>` : ''}
+                        ${proj.live && proj.live !== '#' ? `
+                        <a href="${proj.live}" target="_blank" class="project-icon-link" title="${proj.live.includes('figma.com') ? 'Figma Design' : 'Live Demo'}" rel="noreferrer">
+                            ${proj.live.includes('figma.com') ? `
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" width="16">
+                            ` : `
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                            </svg>
+                            `}
+                        </a>` : ''}
+                    </div>
+                </div>
             </div>
         `;
         card.style.cursor = 'pointer';
         card.addEventListener('click', (e) => {
-            if (e.target.closest('.project-card-links') || e.target.closest('.project-card-link')) {
+            if (e.target.closest('.project-card-links') || e.target.closest('.project-icon-link')) {
                 return;
             }
             openProjectModal(proj);
         });
 
         projectsGrid.appendChild(card);
-
-        // Staggered smooth fade-in transition
-        setTimeout(() => {
-            card.classList.add('revealed');
-        }, 50 + i * 50);
     });
+
+    // Animate cards with GSAP if available, or fallback
+    if (typeof gsap !== 'undefined') {
+        gsap.fromTo('.project-card', 
+            { opacity: 0, y: 30, scale: 0.97 }, 
+            { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.08, ease: "power2.out" }
+        );
+    } else {
+        document.querySelectorAll('.project-card').forEach((c, i) => {
+            setTimeout(() => c.classList.add('revealed'), 50 + i * 50);
+        });
+    }
 
     if (typeof init3DTilt === 'function') {
         init3DTilt();
@@ -222,6 +256,19 @@ function openProjectModal(proj) {
     document.getElementById('modalCategory').textContent = proj.category;
     document.getElementById('modalTitle').textContent = proj.title;
 
+    // Image preview
+    const previewContainer = document.getElementById('modalPreviewContainer');
+    const previewImg = document.getElementById('modalPreviewImg');
+    if (previewContainer && previewImg) {
+        if (proj.image) {
+            previewImg.src = proj.image;
+            previewImg.alt = proj.title;
+            previewContainer.style.display = 'block';
+        } else {
+            previewContainer.style.display = 'none';
+        }
+    }
+
     // Problem, Solution, Impact
     const details = proj.details || {
         problem: "Details about the problem this project addresses will be updated soon.",
@@ -244,24 +291,24 @@ function openProjectModal(proj) {
         let linksHTML = '';
         if (proj.github && proj.github !== '#') {
             linksHTML += `
-                <a href="${proj.github}" target="_blank" class="project-card-link">
+                <a href="${proj.github}" target="_blank" class="project-card-link" rel="noreferrer">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="invert-icon" width="16">
-                    <span>GitHub Repository</span>
+                    <span>View GitHub Repository</span>
                 </a>
             `;
         }
         if (proj.live && proj.live !== '#') {
             const isFigma = proj.live.includes('figma.com');
             linksHTML += `
-                <a href="${proj.live}" target="_blank" class="project-card-link">
+                <a href="${proj.live}" target="_blank" class="project-card-link" rel="noreferrer">
                     ${isFigma ? `
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" width="16">
-                    <span>Figma Design</span>
+                    <span>Open Figma Prototype</span>
                     ` : `
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
                     </svg>
-                    <span>Live Demo</span>
+                    <span>Launch Live Demo</span>
                     `}
                 </a>
             `;
@@ -269,7 +316,7 @@ function openProjectModal(proj) {
         linksContainer.innerHTML = linksHTML;
     }
 
-    // Show Modal
+    // Show Modal with GSAP or class
     projectModal.classList.add('active');
     document.body.classList.add('modal-open');
 }
@@ -393,6 +440,7 @@ const interval = setInterval(() => {
             if (loadingScreen) loadingScreen.classList.add('hidden');
             initData();
             initObserver();
+            if (typeof initGSAP === 'function') initGSAP();
         }, 400);
     }
     if (loaderBarFill) loaderBarFill.style.width = progress + '%';
@@ -656,38 +704,70 @@ function animateCounters() {
     });
 }
 
-/* ============ Navbar Scroll ============ */
+/* ============ Navbar & Scroll Progress Tracking ============ */
 const navbar = document.getElementById('navbar');
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-link');
+const scrollProgress = document.getElementById('scrollProgress');
+const scrollPercent = document.getElementById('scrollPercent');
+const floatingScrollPill = document.getElementById('floatingScrollPill');
+const backToTopBtn = document.getElementById('backToTopBtn');
 
 window.addEventListener('scroll', () => {
-    // Scroll progress bar
-    const scrollProgress = document.getElementById('scrollProgress');
+    const scrollY = window.scrollY;
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progressPercentage = totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0;
+
+    // Update Top Scroll Progress Bar
     if (scrollProgress) {
-        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progressPercent = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
-        scrollProgress.style.width = progressPercent + '%';
+        scrollProgress.style.width = Math.min(progressPercentage, 100) + '%';
     }
 
-    // Navbar background
-    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
+    // Update Floating Pill Percentage
+    if (scrollPercent) {
+        scrollPercent.textContent = Math.round(progressPercentage) + '%';
+    }
 
-    // Active link
+    // Toggle Floating Pill Visibility
+    if (floatingScrollPill) {
+        floatingScrollPill.classList.toggle('visible', scrollY > 260);
+    }
+
+    // Navbar Background on Scroll
+    if (navbar) {
+        navbar.classList.toggle('scrolled', scrollY > 40);
+    }
+
+    // Active Section Link Sync
     let current = '';
     sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 200) current = s.id;
+        if (scrollY >= s.offsetTop - 200) current = s.id;
     });
     navLinks.forEach(link => {
         link.classList.toggle('active', link.dataset.section === current);
     });
 
-    // Counter trigger
+    // Counter trigger fallback
     const statsEl = document.querySelector('.hero-stats');
     if (statsEl && statsEl.getBoundingClientRect().top < window.innerHeight) {
-        if (!statsEl.dataset.animated) { statsEl.dataset.animated = '1'; animateCounters(); }
+        if (!statsEl.dataset.animated) { 
+            statsEl.dataset.animated = '1'; 
+            animateCounters(); 
+        }
     }
 });
+
+// Back to Top Button Handlers
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+if (floatingScrollPill) {
+    floatingScrollPill.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 
 /* ============ Mobile Menu ============ */
 const hamburger = document.getElementById('hamburger');
@@ -705,7 +785,175 @@ document.querySelectorAll('.mobile-link').forEach(link => {
     });
 });
 
-/* ============ Scroll Reveal Observer ============ */
+/* ============ GSAP & ScrollTrigger Animations ============ */
+function initGSAP() {
+    if (typeof gsap === 'undefined') return;
+
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
+    // 1. Hero Entrance Timeline
+    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    
+    heroTl.from(".hero-badge", { 
+        y: 20, 
+        opacity: 0, 
+        duration: 0.7 
+    })
+    .from(".title-word", { 
+        y: 40, 
+        opacity: 0, 
+        stagger: 0.1, 
+        duration: 0.7 
+    }, "-=0.4")
+    .from(".hero-roles", { 
+        y: 15, 
+        opacity: 0, 
+        duration: 0.6 
+    }, "-=0.3")
+    .from(".hero-description", { 
+        y: 20, 
+        opacity: 0, 
+        duration: 0.6 
+    }, "-=0.4")
+    .from(".hero-cta .btn", { 
+        y: 20, 
+        opacity: 0, 
+        stagger: 0.1, 
+        duration: 0.6 
+    }, "-=0.4")
+    .from(".hero-stats .stat-item, .hero-stats .stat-divider", { 
+        y: 20, 
+        opacity: 0, 
+        stagger: 0.08, 
+        duration: 0.6,
+        onComplete: () => {
+            const statsEl = document.querySelector('.hero-stats');
+            if (statsEl && !statsEl.dataset.animated) {
+                statsEl.dataset.animated = '1';
+                animateCounters();
+            }
+        }
+    }, "-=0.3")
+    .from(".floating-card", { 
+        scale: 0.7, 
+        opacity: 0, 
+        stagger: 0.1, 
+        duration: 0.8, 
+        ease: "back.out(1.7)" 
+    }, "-=0.6");
+
+    // 2. ScrollTrigger Section Animations
+    if (typeof ScrollTrigger !== 'undefined') {
+        // Section Headers
+        gsap.utils.toArray('.section-header').forEach(header => {
+            gsap.from(header, {
+                scrollTrigger: {
+                    trigger: header,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                y: 35,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+
+        // Services Cards
+        gsap.from(".service-card", {
+            scrollTrigger: {
+                trigger: ".services-grid",
+                start: "top 82%",
+                toggleActions: "play none none none"
+            },
+            y: 35,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.7,
+            ease: "power2.out"
+        });
+
+        // About Section Cards
+        gsap.from(".about-card", {
+            scrollTrigger: {
+                trigger: ".about-card",
+                start: "top 82%",
+                toggleActions: "play none none none"
+            },
+            x: -30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+        gsap.from(".profile-image-container", {
+            scrollTrigger: {
+                trigger: ".profile-image-container",
+                start: "top 82%",
+                toggleActions: "play none none none"
+            },
+            x: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+
+        // Currently Section Items
+        gsap.from(".currently-desc-card", {
+            scrollTrigger: {
+                trigger: ".currently-grid",
+                start: "top 82%",
+                toggleActions: "play none none none"
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.7,
+            ease: "power2.out"
+        });
+        gsap.from(".currently-item-card", {
+            scrollTrigger: {
+                trigger: ".currently-items",
+                start: "top 82%",
+                toggleActions: "play none none none"
+            },
+            y: 25,
+            opacity: 0,
+            stagger: 0.12,
+            duration: 0.6,
+            ease: "power2.out"
+        });
+
+        // Tools Categories
+        gsap.from(".tool-category", {
+            scrollTrigger: {
+                trigger: ".tools-grid",
+                start: "top 82%",
+                toggleActions: "play none none none"
+            },
+            y: 35,
+            opacity: 0,
+            stagger: 0.12,
+            duration: 0.7,
+            ease: "power2.out"
+        });
+
+        // Contact Section
+        gsap.from(".contact-info", {
+            scrollTrigger: {
+                trigger: ".contact-info",
+                start: "top 82%",
+                toggleActions: "play none none none"
+            },
+            y: 35,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+    }
+}
+
+/* ============ Scroll Reveal Fallback Observer ============ */
 function initObserver() {
     const revealElements = document.querySelectorAll('.reveal, .section-header, .about-card, .tool-category, .contact-info, .contact-form-wrapper, .highlight-item');
     revealElements.forEach(el => el.classList.add('reveal-prep'));
@@ -716,7 +964,7 @@ function initObserver() {
                 entry.target.classList.add('revealed');
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
 
     revealElements.forEach(el => revealObserver.observe(el));
 }
@@ -724,19 +972,22 @@ function initObserver() {
 // Helper CSS injector for prep reveal
 const style = document.createElement('style');
 style.innerHTML = `
-    .reveal-prep { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .reveal-prep { opacity: 0; transform: translateY(25px); transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .revealed { opacity: 1 !important; transform: translateY(0) !important; }
 `;
 document.head.appendChild(style);
 
-
-
 /* ============ Smooth Section Scroll ============ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        const targetId = anchor.getAttribute('href');
+        if (targetId && targetId !== '#') {
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     });
 });
 
@@ -758,14 +1009,11 @@ function setupClipboardCopy(btnId, tooltipId, textToCopy) {
     if (!btn || !tooltip) return;
 
     btn.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default anchor href trigger (mailto/tel)
-        e.stopPropagation(); // Prevent parent link click trigger
+        e.preventDefault();
+        e.stopPropagation();
 
         navigator.clipboard.writeText(textToCopy).then(() => {
-            // Show tooltip
             tooltip.classList.add('show');
-
-            // Temporary icon success state
             const origColor = btn.style.color;
             btn.style.color = 'var(--accent-2)';
 

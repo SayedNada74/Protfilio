@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="snGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C5CFF" />
+      <stop offset="100%" stop-color="#00F5D4" />
+    </linearGradient>
+    <filter id="snGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Outer Rounded Container -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#080812" stroke="url(#snGrad)" stroke-width="2.5" />
+  
+  <!-- Ambient Inner Glow -->
+  <circle cx="32" cy="32" r="18" fill="url(#snGrad)" opacity="0.15" />
+  
+  <!-- Monogram 'S' -->
+  <text 
+    x="50%" 
+    y="54%" 
+    text-anchor="middle" 
+    dominant-baseline="middle" 
+    fill="#00F5D4" 
+    font-family="'JetBrains Mono', 'Fira Code', 'Courier New', monospace" 
+    font-size="34" 
+    font-weight="900" 
+    filter="url(#snGlow)"
+    letter-spacing="-1px"
+  >S</text>
+</svg>
