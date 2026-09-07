@@ -5,6 +5,9 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
+    target: 'es2020',
+    cssCodeSplit: true,
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -18,4 +21,5 @@ export default defineConfig({
     chunkSizeWarningLimit: 800,
   },
 });
+
 

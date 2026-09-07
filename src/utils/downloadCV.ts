@@ -1,17 +1,17 @@
 import React from 'react';
-import { CV_BASE64 } from './cvBase64';
 
 /**
- * 100% Reliable CV Download Utility:
- * Uses synchronous Base64 Data URI to prevent Chrome user-activation expiry
- * and sandbox stream drops that produce 0-byte files.
+ * High-Performance CV Download Utility:
+ * Dynamically imports the Base64 payload on-demand so the ~250KB PDF string
+ * is NOT loaded in the initial critical bundle, saving massive bandwidth and parse time.
  */
-export const downloadCV = (e?: React.MouseEvent) => {
+export const downloadCV = async (e?: React.MouseEvent) => {
   if (e) {
     e.preventDefault();
   }
 
   try {
+    const { CV_BASE64 } = await import('./cvBase64');
     const link = document.createElement('a');
     link.style.display = 'none';
     link.href = `data:application/pdf;base64,${CV_BASE64}`;
@@ -34,3 +34,4 @@ export const downloadCV = (e?: React.MouseEvent) => {
     window.open('/sayed-nada-cv.pdf', '_blank');
   }
 };
+

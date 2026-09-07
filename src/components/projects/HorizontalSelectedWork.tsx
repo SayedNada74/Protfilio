@@ -146,6 +146,7 @@ export const HorizontalSelectedWork: React.FC<HorizontalSelectedWorkProps> = ({ 
                       rel="noopener noreferrer"
                       className={styles.imageAnchor}
                       aria-label={`Open ${project.title}`}
+                      data-cursor="VIEW"
                     >
                       <img
                         src={currentImage}
@@ -170,6 +171,7 @@ export const HorizontalSelectedWork: React.FC<HorizontalSelectedWorkProps> = ({ 
                             className={`${styles.thumbBtn} ${currentImage === thumb ? styles.activeThumb : ''
                               }`}
                             aria-label={`View screenshot ${tIdx + 1}`}
+                            data-cursor="VIEW"
                           >
                             <img
                               src={thumb}
@@ -197,6 +199,7 @@ export const HorizontalSelectedWork: React.FC<HorizontalSelectedWorkProps> = ({ 
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.titleLink}
+                      data-cursor="VIEW"
                     >
                       {project.title}
                     </a>

@@ -89,6 +89,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           rel="noopener noreferrer"
           className={styles.imageAnchor}
           aria-label={`Open ${project.title}`}
+          data-cursor="VIEW"
         >
           <div className={styles.imageWrapper}>
             <img
@@ -123,6 +124,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                   }}
                   className={`${styles.thumbBtn} ${activeImage === thumb ? styles.activeThumb : ''}`}
                   aria-label={`View screenshot ${idx + 1}`}
+                  data-cursor="VIEW"
                 >
                   <img
                     src={thumb}
@@ -152,6 +154,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.titleAnchor}
+            data-cursor="VIEW"
           >
             {project.title}
           </a>

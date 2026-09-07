@@ -13,19 +13,34 @@ const LOADING_STEPS = [
 export const PagePreloader: React.FC = () => {
   const [percent, setPercent] = useState(0);
   const [statusIndex, setStatusIndex] = useState(0);
-  const [isDone, setIsDone] = useState(false);
+  const [isDone, setIsDone] = useState(() => {
+    // If already visited this session, skip preloader immediately
+    try {
+      return Boolean(sessionStorage.getItem('visited_session'));
+    } catch {
+      return false;
+    }
+  });
 
   const preloaderRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (isDone) return;
+
+    try {
+      sessionStorage.setItem('visited_session', 'true');
+    } catch {
+      // ignore
+    }
+
     // Lock scroll during preloader
     document.body.style.overflow = 'hidden';
 
     const counterObj = { value: 0 };
 
-    // GSAP tween for the 0 to 100 count
+    // GSAP tween for the 0 to 100 count (fast 0.75s)
     const tl = gsap.timeline({
       onComplete: () => {
         // Exit animation
@@ -34,30 +49,33 @@ export const PagePreloader: React.FC = () => {
 
         if (preloader && content) {
           gsap.to(content, {
-            scale: 0.92,
+            scale: 0.95,
             opacity: 0,
-            duration: 0.4,
+            duration: 0.25,
             ease: 'power2.in',
           });
 
           gsap.to(preloader, {
             yPercent: -100,
-            duration: 0.8,
-            delay: 0.3,
+            duration: 0.5,
+            delay: 0.1,
             ease: 'power4.inOut',
             onComplete: () => {
               document.body.style.overflow = '';
               setIsDone(true);
             },
           });
+        } else {
+          document.body.style.overflow = '';
+          setIsDone(true);
         }
       },
     });
 
     tl.to(counterObj, {
       value: 100,
-      duration: 1.8,
-      ease: 'power2.inOut',
+      duration: 0.75,
+      ease: 'power2.out',
       onUpdate: () => {
         const val = Math.round(counterObj.value);
         setPercent(val);
@@ -79,9 +97,10 @@ export const PagePreloader: React.FC = () => {
       tl.kill();
       document.body.style.overflow = '';
     };
-  }, []);
+  }, [isDone]);
 
   if (isDone) return null;
+
 
   return (
     <div ref={preloaderRef} className={styles.preloaderOverlay} aria-label="Loading portfolio">

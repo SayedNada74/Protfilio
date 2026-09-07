@@ -117,6 +117,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
   margin-bottom: var(--space-4);
   line-height: 1.2;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -129,6 +130,7 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 ul, ol {
@@ -139,6 +141,14 @@ img, video {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* Rendering performance improvements for below-the-fold sections */
+#services,
+#skills,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
 }
 
 /* Utilities */
@@ -155,6 +165,7 @@ img, video {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline-block;
+  will-change: transform;
 }
 
 @media (max-width: 768px) {
@@ -172,3 +183,4 @@ img, video {
     scroll-behavior: auto !important;
   }
 }
+
