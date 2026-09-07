@@ -30,7 +30,7 @@ export const projects: Project[] = [
     title: 'AquaSmart Dashboard',
     type: 'AI-Powered Water Analytics Platform',
     tier: 1,
-    year: '2025',
+    year: 'From Sep 2025 To Jul 2026',
     shortDescription:
       'An intelligent web platform monitoring real-time municipal water consumption, detecting anomalies with AI, and visualizing massive time-series sensor telemetry.',
     technologies: ['React', 'Next.js', 'Tailwind CSS', 'Recharts', 'TypeScript', 'Figma'],
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     title: 'Sinai Tech Portal',
     type: 'Academic Portal & Resource Hub',
     tier: 1,
-    year: '2025',
+    year: 'From Jul 2026 To Sep 2026',
     shortDescription:
       'A comprehensive educational portal serving students and faculty at Sinai University with real-time academic resources, schedules, and developer documentation.',
     technologies: ['React', 'TypeScript', 'CSS Modules', 'REST APIs', 'Supabase'],
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     title: 'Grand Cafe Platform',
     type: 'E-Commerce & Digital Menu Experience',
     tier: 1,
-    year: '2024',
+    year: 'August 2026',
     shortDescription:
       'An interactive digital ordering system and dynamic menu application crafted for a luxury café, featuring fluid animations and tactile product presentation.',
     technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'REST APIs', 'Responsive UI'],
@@ -123,7 +123,7 @@ export const projects: Project[] = [
     title: 'Buildify Studio Website',
     type: 'Modern Architecture & Construction Firm',
     tier: 2,
-    year: '2024',
+    year: 'July 2026',
     shortDescription:
       'A high-conversion landing page and interactive showcase for an architectural firm with bold typography and smooth layout reveals.',
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'Responsive Design'],
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     title: 'Ziko Portfolio',
     type: 'Interactive Creative Developer Portfolio',
     tier: 2,
-    year: '2024',
+    year: 'May 2026',
     shortDescription:
       'A bespoke portfolio experience highlighting smooth scroll physics, custom typography, and dynamic WebGL shaders.',
     technologies: ['React', 'Three.js', 'Lenis Scroll', 'Tailwind CSS'],
@@ -163,7 +163,7 @@ export const projects: Project[] = [
     title: 'AquaSmart App UI/UX',
     type: 'Mobile App Design System',
     tier: 3,
-    year: '2025',
+    year: 'December 2025',
     shortDescription:
       'Complete end-to-end mobile design system in Figma for the AquaSmart ecosystem, featuring dark mode telemetry and consumer usage metrics.',
     technologies: ['Figma', 'Mobile UI', 'Prototyping', 'Design Tokens'],
@@ -184,7 +184,7 @@ export const projects: Project[] = [
     title: 'Food Delivery Mobile UI',
     type: 'Mobile Application Prototype',
     tier: 3,
-    year: '2024',
+    year: 'October 2025',
     shortDescription:
       'A vibrant, user-centric mobile UI design with high-fidelity prototypes, interactive checkout flows, and custom iconography.',
     technologies: ['Figma', 'UI Design', 'Wireframing', 'User Flows'],
@@ -206,7 +206,7 @@ export const projects: Project[] = [
     title: 'Sinai Tech Portal UI Blueprint',
     type: 'Web Portal Design System',
     tier: 3,
-    year: '2025',
+    year: 'May 2026',
     shortDescription:
       'The foundational design blueprints and reusable Figma component library for Sinai Tech Portal.',
     technologies: ['Figma', 'Web Design', 'Design Systems'],
@@ -229,7 +229,7 @@ export const projects: Project[] = [
     title: 'Buildify Post Templates',
     type: 'Marketing & Brand Kit Design',
     tier: 3,
-    year: '2024',
+    year: 'Jul 2026',
     shortDescription:
       'High-impact social media, branding, and promotional design templates for Buildify Studio.',
     technologies: ['Figma', 'Branding', 'Typography'],
@@ -250,7 +250,7 @@ export const projects: Project[] = [
     title: 'Skill Swap Hub UI',
     type: 'Peer-to-Peer Knowledge Platform',
     tier: 3,
-    year: '2024',
+    year: 'April 2026',
     shortDescription:
       'Comprehensive design system connecting learners and experts to swap skills with real-time session booking and rating cards.',
     technologies: ['Figma', 'UX Research', 'Prototyping'],
