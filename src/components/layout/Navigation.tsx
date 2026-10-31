@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
-import { Moon, Sun, ArrowUpRight } from 'lucide-react';
+import { Moon, Sun, ArrowUpRight, Search } from 'lucide-react';
 import { Magnetic } from '../common/Magnetic';
 import styles from './Navigation.module.css';
 
@@ -24,8 +24,30 @@ export const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [cairoTime, setCairoTime] = useState<string>('');
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Real-time Egypt Time Clock
+  useEffect(() => {
+    const updateClock = () => {
+      try {
+        const str = new Date().toLocaleTimeString('en-US', {
+          timeZone: 'Africa/Cairo',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+        });
+        setCairoTime(str);
+      } catch {
+        const now = new Date();
+        setCairoTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+      }
+    };
+    updateClock();
+    const interval = setInterval(updateClock, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -148,6 +170,15 @@ export const Navigation: React.FC = () => {
               <span className={styles.logoBadge}>.dev</span>
             </NavLink>
           </Magnetic>
+
+          {/* Live Cairo/Ismailia Time Badge in Header */}
+          <div
+            className={styles.navTimeBadge}
+            title="Local time in Ismailia, Egypt (UTC+2) • Available for Remote Roles"
+          >
+            <span className={styles.navPulseDot} />
+            <span>Ismailia, EG {cairoTime || '04:30 PM'}</span>
+          </div>
         </div>
 
         {/* Mobile Backdrop Overlay */}
@@ -195,7 +226,7 @@ export const Navigation: React.FC = () => {
           </li>
         </ul>
 
-        {/* Right Actions: Let's Talk WhatsApp Button + Theme Toggle */}
+        {/* Right Actions: Let's Talk WhatsApp Button + Command Palette + Theme Toggle */}
         <div className={styles.actions}>
           <Magnetic strength={0.35}>
             <a
@@ -208,6 +239,19 @@ export const Navigation: React.FC = () => {
               <span>Let's Talk</span>
               <ArrowUpRight size={15} />
             </a>
+          </Magnetic>
+
+          <Magnetic strength={0.25}>
+            <button
+              type="button"
+              className={styles.cmdBtn}
+              onClick={() => window.dispatchEvent(new CustomEvent('open-command-palette'))}
+              title="Search & Commands (Ctrl + K)"
+              aria-label="Open command palette"
+            >
+              <Search size={15} />
+              <span className={styles.cmdBadge}>⌘K</span>
+            </button>
           </Magnetic>
 
           <Magnetic strength={0.25}>

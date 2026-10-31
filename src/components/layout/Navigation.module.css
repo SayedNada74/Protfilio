@@ -503,4 +503,105 @@
   }
 }
 
+/* Live Time Badge in Header */
+.navTimeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 245, 212, 0.08);
+  border: 1px solid rgba(0, 245, 212, 0.25);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-left: 14px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+:global([data-theme='light']) .navTimeBadge {
+  background: rgba(44, 100, 121, 0.08);
+  border-color: rgba(44, 100, 121, 0.25);
+  color: var(--accent);
+}
+
+.navPulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .navTimeBadge {
+    display: none;
+  }
+}
+
+/* Command Palette Trigger in Navbar */
+.cmdBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.cmdBtn:hover {
+  background: rgba(0, 245, 212, 0.08);
+  border-color: rgba(0, 245, 212, 0.3);
+  color: var(--accent);
+}
+
+:global([data-theme='light']) .cmdBtn {
+  background: rgba(44, 100, 121, 0.05);
+  border-color: rgba(44, 100, 121, 0.15);
+  color: var(--text-secondary);
+}
+
+:global([data-theme='light']) .cmdBtn:hover {
+  background: rgba(44, 100, 121, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cmdBadge {
+  font-size: 0.68rem;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-tertiary);
+}
+
+:global([data-theme='light']) .cmdBadge {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .cmdBadge {
+    display: none;
+  }
+  .cmdBtn {
+    padding: 0 8px;
+    width: 36px;
+    justify-content: center;
+  }
+}
+
+
 

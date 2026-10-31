@@ -4,6 +4,8 @@ import { CyberWorkstation } from './CyberWorkstation';
 import { Magnetic } from '../common/Magnetic';
 import { ArrowUpRight, Download, Mail } from 'lucide-react';
 import { downloadCV } from '../../utils/downloadCV';
+import { projects } from '../../data/projects';
+import { LiveStatusPill } from '../common/LiveStatusPill';
 import styles from './Hero.module.css';
 
 const ROLES = [
@@ -58,10 +60,7 @@ export const Hero: React.FC = () => {
       <div className={`container ${styles.heroContainer}`}>
         {/* Left column: Content */}
         <div className={styles.heroContent}>
-          <div className={styles.badge}>
-            <span className={styles.badgeDot}></span>
-            <span>AVAILABLE FOR WORK • FRONTEND ARCHITECT</span>
-          </div>
+          <LiveStatusPill />
 
           <h1 className={styles.title}>
             <span className={styles.greeting}>Hi, I'm</span>
@@ -113,7 +112,7 @@ export const Hero: React.FC = () => {
           <div className={styles.stats}>
             <div className={styles.statItem}>
               <div className={styles.statNumberWrapper}>
-                <span className={styles.statNumber}>10</span>
+                <span className={styles.statNumber}>{projects.length}</span>
                 <span className={styles.statPlus}>+</span>
               </div>
               <span className={styles.statLabel}>Projects</span>

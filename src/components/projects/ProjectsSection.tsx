@@ -9,8 +9,10 @@ type CategoryFilter = 'all' | 'web' | 'uiux';
 export const ProjectsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<CategoryFilter>('all');
 
-  // The 5 flagship projects explicitly requested for the horizontal scroll showcase
+  // Flagship projects for the horizontal scroll showcase
   const selectedIds = [
+    'dblkk',
+    'dr-rasha-pharmacy',
     'aquasmart',
     'sinai-tech-portal',
     'grand-cafe',

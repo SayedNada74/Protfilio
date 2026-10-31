@@ -26,6 +26,63 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'dblkk',
+    title: 'DBLKK — Streetwear & Athletic Platform',
+    type: 'E-Commerce & Digital Apparel Experience',
+    tier: 1,
+    year: 'October 2026',
+    shortDescription:
+      'A high-performance modern streetwear and athletic apparel e-commerce platform built with Next.js, featuring dynamic collection drops, an interactive bag drawer, and cash-on-delivery checkout.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    featuredImage: '/projects/DBLKK/1.jpg',
+    galleryImages: [
+      '/projects/DBLKK/1.jpg',
+      '/projects/DBLKK/2.jpg',
+      '/projects/DBLKK/3.jpg',
+      '/projects/DBLKK/4.jpg',
+    ],
+    liveUrl: 'https://dblkk-eg.vercel.app/',
+    caseStudy: {
+      problem:
+        'Modern Egyptian streetwear brands require an agile, ultra-fast online shopping presence with dynamic inventory drops, frictionless mobile cart drawers, and local cash-on-delivery checkout workflows.',
+      solution:
+        'Architected a sleek, responsive e-commerce platform using Next.js with fluid micro-interactions, real-time cart state management, and an elevated dark/light athletic visual identity.',
+      architecture:
+        'Engineered with Next.js App Router for optimal rendering, Tailwind CSS for brand styling, and modular components for product customization and bag drawer.',
+      impact:
+        'Delivered a frictionless shopping experience with sub-second page transitions, high-conversion UI, and mobile-first checkout readiness.',
+    },
+  },
+  {
+    id: 'dr-rasha-pharmacy',
+    title: 'Dr. Rasha Pharmacy Platform',
+    type: 'Healthcare E-Commerce & Telepharmacy Experience',
+    tier: 1,
+    year: 'October 2026',
+    shortDescription:
+      'A comprehensive digital pharmacy and healthcare e-commerce platform featuring online prescription uploads, real-time product filtering across medical brands, an interactive cart drawer, and 24/7 hotline integration.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'REST APIs'],
+    featuredImage: '/projects/Dr-Rasha-Pharmacy/1.jpg',
+    galleryImages: [
+      '/projects/Dr-Rasha-Pharmacy/1.jpg',
+      '/projects/Dr-Rasha-Pharmacy/2.jpg',
+      '/projects/Dr-Rasha-Pharmacy/3.jpg',
+      '/projects/Dr-Rasha-Pharmacy/4.jpg',
+      '/projects/Dr-Rasha-Pharmacy/5.jpg',
+    ],
+    liveUrl: 'https://dr-rasha-pharmacy.vercel.app/',
+    caseStudy: {
+      problem:
+        'Patients face friction deciphering physical medical prescriptions, tracking availability of specialized medications, and ordering healthcare essentials swiftly from local pharmacies.',
+      solution:
+        'Engineered a full-featured digital pharmacy web application with direct prescription photo upload workflows, brand-based filtering, instant cart management, and 24/7 customer care channels.',
+      architecture:
+        'Built with Next.js App Router for server-rendered performance, responsive RTL Arabic typography, modular catalog search components, and streamlined order checkout.',
+      impact:
+        'Simplified digital healthcare access for patients with instant prescription processing, transparent pricing, and rapid doorstep delivery coordination.',
+    },
+  },
+  {
     id: 'aquasmart',
     title: 'AquaSmart Dashboard',
     type: 'AI-Powered Water Analytics Platform',
